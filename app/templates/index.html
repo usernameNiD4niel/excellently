@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Formula Processor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Excel Formula Processor</h1>
+        
+        <!-- Authentication Section -->
+        <div id="authSection" class="auth-section">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email:</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password:</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="button" id="loginBtn">Login</button>
+            </form>
+        </div>
+
+        <!-- User Info Section -->
+        <div id="userInfo" class="user-info" style="display: none;">
+            <p>Welcome, <span id="userName"></span>!</p>
+            <button id="logoutBtn">Logout</button>
+        </div>
+
+        <!-- Excel Processing Section -->
+        <div class="excel-section">
+            <div class="form-group">
+                <label for="excelFile">Upload Excel File:</label>
+                <input type="file" id="excelFile" accept=".xlsx,.xls">
+            </div>
+
+            <div id="columnSelector" class="section" style="display: none;">
+                <h3>Select Columns</h3>
+                <div id="columnOptions" class="column-options"></div>
+                <div id="selectedColumns" class="selected-columns"></div>
+            </div>
+
+            <div id="formulaBuilder" class="section" style="display: none;">
+                <h3>Build Formula</h3>
+                <div class="form-group">
+                    <label for="formulaType">Formula Type:</label>
+                    <select id="formulaType">
+                        <option value="SUM">SUM</option>
+                        <option value="AVERAGE">AVERAGE</option>
+                        <option value="MAX">MAX</option>
+                        <option value="MIN">MIN</option>
+                        <option value="CUSTOM">Custom Formula</option>
+                    </select>
+                </div>
+
+                <div id="customFormulaGroup" class="form-group" style="display: none;">
+                    <label for="customFormula">Custom Formula:</label>
+                    <input type="text" id="customFormula" placeholder="Enter your formula">
+                </div>
+
+                <button id="addFormulaBtn">Add Formula</button>
+            </div>
+
+            <div id="formulasList" class="section" style="display: none;">
+                <h3>Added Formulas</h3>
+                <div id="formulasContainer"></div>
+            </div>
+
+            <button id="processBtn">Process Excel</button>
+
+            <div id="result" class="section" style="display: none;">
+                <h3>Processing Result</h3>
+                <a id="downloadLink" class="download-link">Download Processed File</a>
+            </div>
+
+            <div id="error" class="error" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html> 

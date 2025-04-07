@@ -1,0 +1,1 @@
+# This file can be empty now as fixtures are moved to conftest.py 
